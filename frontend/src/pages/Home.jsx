@@ -25,7 +25,7 @@ const [selectedTurf, setSelectedTurf] = useState(null);
 const [bookingMessage, setBookingMessage] = useState("");
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/turfs")
+    fetch("https://turfverse-backend.onrender.com/api/turfs")
       .then((response) => response.json())
       .then((result) => {
         setTurfs(result.data || []);
@@ -104,7 +104,7 @@ const handleBookingSubmit = async () => {
     const [time] = preferredTime.split(" - ");
     const startTime = new Date(`${bookingDate}T${time}:00`);
 
-    const response = await fetch("http://localhost:5000/api/bookings", {
+    const response = await fetch("https://turfverse-backend.onrender.com/api/bookings", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
