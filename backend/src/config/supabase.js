@@ -1,0 +1,22 @@
+
+const { createClient } = require("@supabase/supabase-js");
+
+const supabaseUrl = process.env.SUPABASE_URL;
+console.log("Supabase URL loaded:", supabaseUrl);
+const supabaseKey = process.env.SUPABASE_ANON_KEY;
+
+if (!supabaseUrl || !supabaseKey) {
+  throw new Error("Supabase environment variables are missing!");
+}
+
+const supabase = createClient(
+  supabaseUrl,
+  supabaseKey,
+  {
+    auth: {
+      persistSession: false
+    }
+  }
+);
+
+module.exports = supabase;
